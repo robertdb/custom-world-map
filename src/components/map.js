@@ -44,7 +44,7 @@ class Map extends React.Component {
       });
       const country = await this.getCountry(countryCode);
       this.setState({
-        countriesNamesArray: [...countriesNamesArray, country]
+        countriesNamesArray: [country, ...countriesNamesArray]
       });
     }
   };
@@ -81,7 +81,7 @@ class Map extends React.Component {
             },
             selectedHover: {}
           }}
-          regionsSelectable={true}
+          regionsSelectable={false}
           series={{
             regions: [
               {
