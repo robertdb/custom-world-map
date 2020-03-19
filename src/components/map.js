@@ -2,13 +2,15 @@ import React from "react";
 import { VectorMap } from "react-jvectormap";
 import Grid from "@material-ui/core/Grid";
 import CountryCard from "./Country";
+import Alert from "@material-ui/lab/Alert";
 
 class Map extends React.Component {
   state = {
     countriesCodesArray: [],
     countriesNamesArray: [],
     data: {},
-    color: "#48aeef"
+    color: "#48aeef",
+    error: false
   };
 
   async getCountry(code) {
@@ -39,19 +41,23 @@ class Map extends React.Component {
     const { countriesCodesArray, countriesNamesArray } = this.state;
     // console.log(countryCode);
     if (countriesCodesArray.indexOf(countryCode) === -1) {
-      this.setState({
-        countriesCodesArray: [...countriesCodesArray, countryCode]
-      });
       const country = await this.getCountry(countryCode);
+      if (!country) {
+        return this.setState({
+          error: true
+        });
+      }
       this.setState({
-        countriesNamesArray: [country, ...countriesNamesArray]
+        countriesCodesArray: [...countriesCodesArray, countryCode],
+        countriesNamesArray: [country, ...countriesNamesArray],
+        error: false
       });
     }
   };
 
   render() {
     console.log(this.state);
-    const { countriesNamesArray, color } = this.state;
+    const { countriesNamesArray, error } = this.state;
     return (
       <Grid container justify="center">
         <VectorMap
@@ -75,21 +81,7 @@ class Map extends React.Component {
             hover: {
               "fill-opacity": 0.8,
               cursor: "pointer"
-            },
-            selected: {
-              fill: "#2938bc" // color for the clicked country
-            },
-            selectedHover: {}
-          }}
-          regionsSelectable={false}
-          series={{
-            regions: [
-              {
-                values: this.state.data, // this is the map data
-                scale: ["#146804", color], // your color game's here
-                normalizeFunction: "polynomial"
-              }
-            ]
+            }
           }}
         />
         <Grid
@@ -100,16 +92,23 @@ class Map extends React.Component {
           item
           xs={10}
         >
-          {countriesNamesArray.map((country, i) => {
-            const { countrydata } = country;
-            console.log(countrydata[0]);
-            return (
-              <Grid item xs={12} md={4} key={i}>
-                <CountryCard {...countrydata[0]} />
-              </Grid>
-            );
-          })}
+          {!error &&
+            countriesNamesArray.map((country, i) => {
+              const { countrydata } = country;
+              console.log(countrydata[0]);
+              return (
+                <Grid item xs={12} md={4} key={i}>
+                  <CountryCard {...countrydata[0]} />
+                </Grid>
+              );
+            })}
         </Grid>
+        {error && (
+          <Alert severity="error">
+            Los servidores estan caidos, cuando termine de laburar, si persiste
+            los cambiamos jeje
+          </Alert>
+        )}
       </Grid>
     );
   }
