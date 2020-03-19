@@ -1,21 +1,28 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
-import ColorPicker from "./colorPicker";
-
-import { jsx } from "@emotion/core";
-import styled from "@emotion/styled";
-
-const { getName } = require("country-list");
+import Grid from "@material-ui/core/Grid";
+import CountryCard from "./Country";
 
 class Map extends React.Component {
   state = {
     countriesCodesArray: [],
     countriesNamesArray: [],
     data: {},
-    title: "",
-    titleSet: false,
     color: "#48aeef"
   };
+
+  async getCountry(code) {
+    try {
+      let response = await fetch(
+        `https://thevirustracker.com/free-api?countryTotal=${code}`
+      );
+      let responseJson = await response.json();
+      console.log(responseJson);
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   handleColorChange = color => {
     console.log(color.hex);
@@ -28,58 +35,32 @@ class Map extends React.Component {
     });
   };
 
-  handleFormSubmit = () => {
-    this.setState({
-      titleSet: true
-    });
-  };
-
-  handleClick = (e, countryCode) => {
-    const { countriesCodesArray } = this.state;
+  handleClick = async (e, countryCode) => {
+    const { countriesCodesArray, countriesNamesArray } = this.state;
     // console.log(countryCode);
     if (countriesCodesArray.indexOf(countryCode) === -1) {
-      this.setState(
-        {
-          countriesCodesArray: [...countriesCodesArray, countryCode]
-        },
-        () => this.getCountriesNamesList()
-      );
+      this.setState({
+        countriesCodesArray: [...countriesCodesArray, countryCode]
+      });
+      const country = await this.getCountry(countryCode);
+      this.setState({
+        countriesNamesArray: [...countriesNamesArray, country]
+      });
     }
   };
 
-  getCountriesNamesList = () => {
-    const { countriesCodesArray } = this.state;
-    const list = countriesCodesArray.map(code => getName(code));
-    this.setState(
-      {
-        countriesNamesArray: list
-      },
-      () => this.makeMapDataStructure()
-    );
-  };
-
-  makeMapDataStructure = () => {
-    const { countriesCodesArray } = this.state;
-    let obj = {};
-    //{CN: 5, MX: 5, TX: 5}
-    countriesCodesArray.forEach(countryCode => (obj[countryCode] = 5));
-    this.setState({
-      data: obj
-    });
-  };
-
   render() {
-    // console.log(this.state.data);
-    const { countriesNamesArray, title, titleSet, color } = this.state;
+    console.log(this.state);
+    const { countriesNamesArray, color } = this.state;
     return (
-      <div>
+      <Grid container justify="center">
         <VectorMap
           map={"world_mill"}
           backgroundColor="transparent" // change it to ocean blue: #0077be
           zoomOnScroll={false}
           containerStyle={{
             width: "100%",
-            height: "520px"
+            height: "450px"
           }}
           onRegionClick={this.handleClick} // gets the country code
           containerClassName="map"
@@ -111,49 +92,27 @@ class Map extends React.Component {
             ]
           }}
         />
-        <Container>
-          {titleSet ? (
-            <h3>{title}</h3>
-          ) : (
-            <div>
-              <h4>Set your map's title:</h4>
-              <form onSubmit={this.handleFormSubmit}>
-                <input type="text" onChange={this.handleChange} />
-              </form>
-            </div>
-          )}
-          <ColorPickerContainer>
-            <ColorPicker
-              handleColorChange={this.handleColorChange}
-              color={color}
-            />
-          </ColorPickerContainer>
-          <div>
-            {countriesNamesArray.map((country, i) => (
-              <div key={i}>{country}</div>
-            ))}
-          </div>
-        </Container>
-      </div>
+        <Grid
+          spacing={4}
+          alignItems="center"
+          justify="center"
+          container
+          item
+          xs={10}
+        >
+          {countriesNamesArray.map((country, i) => {
+            const { countrydata } = country;
+            console.log(countrydata[0]);
+            return (
+              <Grid item xs={12} md={4} key={i}>
+                <CountryCard {...countrydata[0]} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Grid>
     );
   }
 }
 
 export default Map;
-
-const Container = styled.div`
-  text-align: center;
-  input {
-    padding: 10px;
-    border-radius: 5px;
-    border-shadow: 0;
-    border-style: solid;
-    font-size: 16px;
-    &:focus {
-      outline: none;
-    }
-  }
-`;
-const ColorPickerContainer = styled.div`
-  position: absolute;
-`;
