@@ -3,6 +3,7 @@ import { VectorMap } from "react-jvectormap";
 import Grid from "@material-ui/core/Grid";
 import CountryCard from "./Country";
 import Alert from "@material-ui/lab/Alert";
+import styles from "./styles.css";
 
 class Map extends React.Component {
   state = {
@@ -56,7 +57,7 @@ class Map extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log("countriesCodesArray", this.state.countriesCodesArray);
     const { countriesNamesArray, error } = this.state;
     return (
       <Grid container justify="center">
@@ -69,18 +70,18 @@ class Map extends React.Component {
             height: "450px"
           }}
           onRegionClick={this.handleClick} // gets the country code
+          onRegionTipShow={(e, tip, code) => console.log("tip", e, tip, code)}
           containerClassName="map"
           regionStyle={{
             initial: {
-              fill: "#e4e4e4",
+              fill: "#000",
               "fill-opacity": 0.9,
               stroke: "none",
               "stroke-width": 0,
               "stroke-opacity": 0
             },
-            hover: {
-              "fill-opacity": 0.8,
-              cursor: "pointer"
+            selected: {
+              fill: "#ccc" // color for the clicked country
             }
           }}
         />
