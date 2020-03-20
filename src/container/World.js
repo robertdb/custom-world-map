@@ -52,7 +52,7 @@ function ServerModal() {
             Detectamos problemas con los servidores
           </h2>
           <p id="server-modal-description">
-            Estamos buscando fuentes datos que nos ayuden a infornar.
+            Estamos buscando fuentes datos que nos ayuden a informar.
           </p>
         </div>
       </Modal>
