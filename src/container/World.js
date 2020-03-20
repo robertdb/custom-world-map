@@ -64,7 +64,7 @@ const World = () => {
   return (
     <div>
       <Topbar />
-      <ServerModal />
+      <Map />
     </div>
   );
 };
