@@ -62,7 +62,7 @@ const CountryCard = ({
 }) => {
   const { title, code, source } = info;
   const classes = useStyles();
-
+  console.log("DATA ARG", info);
   return (
     <Card className={classes.root}>
       <CardHeader
