@@ -8,8 +8,13 @@ const Main = () => {
   return (
     <div>
       <Topbar />
-      <Box display="flex" alignItems="center" justifyContent="center">
-        <Typography variant="h3" gutterBottom>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        p={"0px 16px"}
+      >
+        <Typography variant="h4" gutterBottom>
           Informe Oficial del Gobierno
         </Typography>
       </Box>
