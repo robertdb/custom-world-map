@@ -10,37 +10,6 @@ import {
   Legend
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    infectados: 4000
-  },
-  {
-    name: "Page B",
-    infectados: 3000
-  },
-  {
-    name: "Page C",
-    infectados: 2000
-  },
-  {
-    name: "Page D",
-    infectados: 2780
-  },
-  {
-    name: "Page E",
-    infectados: 1890
-  },
-  {
-    name: "Page F",
-    infectados: 2390
-  },
-  {
-    name: "Page G",
-    infectados: 3490
-  }
-];
-
 const PlotLine = ({ width, timeLine }) => {
   const size = {
     xs: 360,

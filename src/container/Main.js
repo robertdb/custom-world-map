@@ -9,7 +9,7 @@ import CountryCard from "../components/Country";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import PlotLine from "../components/PlotLine";
-
+import MathModel from "../components/MathModel";
 import moment from "moment";
 import "moment/locale/es"; // without this line it didn't work
 moment.locale("es");
@@ -199,6 +199,22 @@ const Main = () => {
         m={"16px 0px"}
       >
         <PlotLine timeLine={argInfoTimeline} />
+      </Box>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        m={"5rem 1rem 0rem 1rem"}
+      >
+        <Typography variant="h5">#QuedateEnCasa</Typography>
+      </Box>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        m={"2rem 1rem 0rem 1rem"}
+      >
+        <MathModel timeline={argInfoTimeline} />
       </Box>
 
       <Box
