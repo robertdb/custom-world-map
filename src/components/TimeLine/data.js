@@ -1,5 +1,26 @@
 export const informes = [
   {
+    date: "21-03-2020",
+    lines: [
+      `Al momento, en Argentina la mayoría de los casos son importados y se detecta transmisión local en conglomerados. En Argentina coexisten estrategias de contención y mitigación de mortalidad y transmisión.`,
+      `Hoy fueron confirmados 67 nuevos casos de COVID-19:`,
+      `- 29 en la Ciudad Autónoma de Buenos Aires - 15 en Provincia de Buenos Aires`,
+      `- 5 en Chaco`,
+      `- 5 Mendoza`,
+      `- 4 Córdoba`,
+      `- 3 Tierra del Fuego `,
+      `- 2 Corrientes`,
+      `- 2 Santa Fe`,
+      `- 1 Tucumán`,
+      `- 1 Río Negro`,
+      `De los 67 casos, 45 corresponden a personas con antecedente de viaje a zona con transmisión comunitaria, mientras que 12 son contactos estrechos de casos confirmados. Los otros 10 se encuentran en investigación para determinar el antecedente epidemiológico.`,
+      `En el día de la fecha, se constató el fallecimiento de una paciente con diagnóstico de COVID19. Es el cuarto caso en el país. Se trata de una mujer de 67 años, residente de Provincia de Buenos Aires con antecedente de obesidad y enfermedad pulmonar obstructiva crónica. Presentaba antecedente de viaje a República Dominicana y crucero en el Caribe, desde el 29/2 al 12/3.`,
+      `El total de casos confirmados en Argentina es de 225, de los cuales 4 fallecieron. Las autoridades sanitarias de las provincias se encuentran realizando la investigación epidemiológica de los nuevos casos confirmados, con el fin de detectar los contactos estrechos para que cumplan el aislamiento domiciliario con seguimiento diario establecido por protocolo.`,
+      `Zonas definidas por la Organización Mundial de la Salud como de transmisión local o comunitaria:`,
+      `https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports`
+    ]
+  },
+  {
     date: "20-03-2020",
     lines: [
       `Al momento, en Argentina la mayoría de los casos son importados y se detecta transmisión local en
