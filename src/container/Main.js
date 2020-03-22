@@ -93,6 +93,14 @@ const Main = () => {
   return (
     <div>
       <Topbar />
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        m={"5rem 1rem 0rem 1rem"}
+      >
+        <Typography variant="h5">Coronavirus en Argentina</Typography>
+      </Box>
       <Paper elevation={3} style={{ margin: "0px 8px" }}>
         <Box m={"32px 0px"} p={"16px 0px"}>
           <Grid container xs={12} spacing={2}>
