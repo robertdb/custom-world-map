@@ -10,3 +10,8 @@
   font-size: smaller;
   padding: 3px;
 }
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+  display: none !important;
+}
