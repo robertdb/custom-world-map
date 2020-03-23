@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import TimeLine from "../components/TimeLine";
 import Topbar from "./Topbar";
 import CountryCard from "../components/Country";
+import Alert from "@material-ui/lab/Alert";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import PlotLine from "../components/PlotLine";
@@ -18,6 +19,7 @@ const Main = () => {
   const [argInfo, setInfo] = useState(null);
   const [argInfoTimeline, setArgInfoTimeline] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const getArgData = async () => {
@@ -55,8 +57,11 @@ const Main = () => {
 
         setArgInfoTimeline(timePlot);
         setLoading(false);
+        setError(false);
       } catch (error) {
         console.error(error);
+        setError(true);
+        setLoading(false);
       }
     };
     getArgData();
@@ -79,6 +84,25 @@ const Main = () => {
           p={"0px 16px"}
         >
           <ColorCircularProgress />
+        </Box>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <Topbar />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          p={"0px 16px"}
+        >
+          <Alert severity="error">
+            Los servidores estan caidos, si alguno tiene una API estable, por
+            favor contactarme a robertdibejar@gmail.com
+          </Alert>
         </Box>
       </div>
     );
