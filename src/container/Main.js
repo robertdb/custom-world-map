@@ -27,7 +27,6 @@ const Main = () => {
         );
         let globalState = await responseGlobal.json();
         setInfo(globalState.countrydata[0]);
-        console.log("GLOBAL STATE", globalState.countrydata[0]);
 
         let responseTimeline = await fetch(
           `https://thevirustracker.com/free-api?countryTimeline=AR`
@@ -41,10 +40,13 @@ const Main = () => {
             const { total_cases } = time[date];
             return {
               name: moment(date).format("MMMM Do"),
-              infectados: total_cases
+              infectados: total_cases,
+              date
             };
           })
-          .filter(i => i.infectados > 0);
+          .filter(i => i.infectados > 0)
+          .filter(i => moment().isAfter(i.date))
+          .filter(i => !moment().isSame(i.date, "day"));
 
         timePlot.push({
           name: "hoy",
@@ -52,7 +54,6 @@ const Main = () => {
         });
 
         setArgInfoTimeline(timePlot);
-        console.log("TIMELINE", timePlot);
         setLoading(false);
       } catch (error) {
         console.error(error);

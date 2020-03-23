@@ -113,8 +113,6 @@ class Topbar extends Component {
   render() {
     const { classes } = this.props;
 
-    console.log(this.state, this.props);
-
     return (
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>

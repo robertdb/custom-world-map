@@ -20,7 +20,6 @@ class Map extends React.Component {
         `https://thevirustracker.com/free-api?countryTotal=${code}`
       );
       let responseJson = await response.json();
-      console.log(responseJson);
       return responseJson;
     } catch (error) {
       console.error(error);
@@ -40,7 +39,7 @@ class Map extends React.Component {
 
   handleClick = async (e, countryCode) => {
     const { countriesCodesArray, countriesNamesArray } = this.state;
-    // console.log(countryCode);
+
     if (countriesCodesArray.indexOf(countryCode) === -1) {
       const country = await this.getCountry(countryCode);
       if (!country) {
@@ -57,7 +56,6 @@ class Map extends React.Component {
   };
 
   render() {
-    console.log("countriesCodesArray", this.state.countriesCodesArray);
     const { countriesNamesArray, error } = this.state;
     return (
       <Grid container justify="center">
@@ -96,7 +94,7 @@ class Map extends React.Component {
           {!error &&
             countriesNamesArray.map((country, i) => {
               const { countrydata } = country;
-              console.log(countrydata[0]);
+
               return (
                 <Grid item xs={12} md={4} key={i}>
                   <CountryCard {...countrydata[0]} />
