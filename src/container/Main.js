@@ -101,7 +101,7 @@ const Main = () => {
         >
           <Alert severity="error">
             Los servidores estan caidos, si alguno tiene una API estable, por
-            favor contactarme a robertdibejar@gmail.com
+            favor contactarme a robertdibejar@gmail.com.
           </Alert>
         </Box>
       </div>

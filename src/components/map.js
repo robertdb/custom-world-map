@@ -104,8 +104,8 @@ class Map extends React.Component {
         </Grid>
         {error && (
           <Alert severity="error">
-            Los servidores estan caidos, cuando termine de laburar, si persiste
-            los cambiamos jeje
+            Los servidores estan caidos, si alguno tiene una API estable, por
+            favor contactarme a robertdibejar@gmail.com.
           </Alert>
         )}
       </Grid>
