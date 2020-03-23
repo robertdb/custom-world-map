@@ -56,8 +56,8 @@ const Main = () => {
         });
 
         setArgInfoTimeline(timePlot);
-        setLoading(false);
         setError(false);
+        setLoading(false);
       } catch (error) {
         console.error(error);
         setError(true);
