@@ -1,5 +1,35 @@
 export const informes = [
   {
+    date: "23-03-2020",
+    lines: [
+      `Al momento, en Argentina la mayoría de los casos son importados, se detecta transmisión
+    local en conglomerados y se identifica casos de posible transmisión comunitaria que se
+    encuentran en investigación. En nuestro país coexisten estrategias de contención y
+    mitigación de mortalidad y transmisión.`,
+      `Hoy fueron confirmados 36 nuevos casos de COVID-19:`,
+      `- 11 en la Ciudad Autónoma de Buenos Aires`,
+      `- 5 en Provincia de Buenos Aires`,
+      `- 13 Santa Fe`,
+      `- 3 Córdoba`,
+      `- 4 en Chaco`,
+      `De los 36 casos, 17 corresponden a personas con antecedente de viaje a zonas con
+    transmisión comunitaria, mientras que 5 son contactos estrechos de casos confirmados, 14
+    se encuentran en investigación para determinar el antecedente epidemiológico..`,
+      `El total de casos confirmados en Argentina es de 301*, de los cuales 4 fallecieron. Las
+    autoridades sanitarias de las provincias se encuentran realizando la investigación
+    epidemiológica de los nuevos casos confirmados, con el fin de detectar los contactos
+    estrechos para que cumplan el aislamiento domiciliario con seguimiento diario establecido
+    por protocolo.`,
+      `*Debido a la reclasificación de un caso que se encontraba duplicado.`,
+      `Nota: la notificación de los casos por jurisdicción se realiza teniendo en cuenta la residencia
+    según el Registro Nacional de las Personas. Pudiendo variar en función de la investigación
+    de la jurisdicción.`,
+      `Zonas definidas por la Organización Mundial de la Salud como de transmisión local o
+    comunitaria:`,
+      `https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports`
+    ]
+  },
+  {
     date: "22-03-2020",
     lines: [
       `Al momento, en Argentina la mayoría de los casos son importados, se detecta transmisión local en
