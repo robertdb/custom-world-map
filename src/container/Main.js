@@ -217,7 +217,9 @@ const Main = () => {
           </Grid>
         </Box>
       </Paper>
-      <Box
+
+      {/*
+              <Box
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -261,6 +263,8 @@ const Main = () => {
       <Box display="flex" alignItems="center" justifyContent="center">
         <TimeLine />
       </Box>
+
+      */}
     </div>
   );
 };
